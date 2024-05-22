@@ -7,7 +7,8 @@
     "build": "relay-compiler --validate && next build",
     "start": "next start",
     "lint": "next lint",
-    "relay": "relay-compiler"
+    "relay": "relay-compiler",
+    "prebuild": "mkdir -p __generated__ && yarn relay"
   },
   "dependencies": {
     "color-to-rgba": "^1.0.1",
