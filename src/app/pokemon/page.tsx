@@ -1,16 +1,18 @@
 'use client'
-
+import React, { Suspense } from 'react'
 import Pokemon from '@/components/Pokemon'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 
 export default function PokemonView() {
-  const searchParams = useSearchParams()
-
-  const pokemonId = Number(searchParams.get('id'))
   return (
-    <Suspense>
-      <Pokemon pokemonId={pokemonId} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <PokemonLoader />
     </Suspense>
   )
+}
+
+function PokemonLoader() {
+  const searchParams = useSearchParams()
+  const pokemonId = Number(searchParams.get('id'))
+  return <Pokemon pokemonId={pokemonId} />
 }
